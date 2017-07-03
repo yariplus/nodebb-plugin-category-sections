@@ -130,7 +130,7 @@ function modifyCategoryTpl(callback) {
 			return callback(err);
 		}
 		tpl = tpl.toString();
-		var block = templates.getBlock(tpl, 'categories');
+		var block = tpl.replace(/[\s\S]*(<!-- BEGIN categories -->[\s\S]*<!-- END categories -->)[\s\S]*/g, '$1');
 
 		if (!tpl.match('<!-- BEGIN sections -->')) {
 			if (theme === "nodebb-theme-persona") {
